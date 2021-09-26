@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from "react";
-import Welcome from "./views/Welcome"
 import Header from "./views/Header.js"
 import jsonDescr from "./assets/episode-descr.js"
+import TheGame from "./views/TheGame"
 
 const initialState = {
     characterIds: 0,
@@ -13,7 +13,6 @@ const initialState = {
     pageReady: false
 };
 
-const startButton = React.createRef()
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -165,7 +164,7 @@ const App = () => {
     }, [])
 
     useEffect(() => {
-        console.log("atemp to use fetched stats:")
+        console.log("attemp to use fetched stats:")
         if (!(state.statInitializer)) {
             console.log(state.characterIds)
             dispatch({ type: "setFirstInstanceQuestions", value: fetchCharacterQuestions(4, 4) })
@@ -175,16 +174,6 @@ const App = () => {
         }
     }, [state.statInitializer])
 
-    useEffect(() => {
-        if (state.pageReady) {
-            startButton.current.disabled = false
-
-        }
-    }, [state.pageReady])
-
-
-
-
     return (
         <>
             <header>
@@ -193,9 +182,7 @@ const App = () => {
             <main>
                 {/* Initial Component, rendered when starting the app */}
                 {/* after submitting, the next component with the first question takes the place of the Welcome component */}
-                <Welcome ref={startButton} />
-
-                <Instance1 />
+                <TheGame state={state} />
             </main>
         </>
     )

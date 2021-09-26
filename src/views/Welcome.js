@@ -1,10 +1,19 @@
-import React from "react"
+import React, {useEffect} from "react"
+
+const welcome= React.createRef()
+
 
 const Welcome = React.forwardRef((props, ref) => {
+    
+    if(props.started){
+        welcome.current.style.display = "none"
+    }
     return (
-        <section className="welcome">
+        <section ref={welcome} className="welcome">
             <h2>Get started right here - blablabla</h2>
-            <button onClick={props.function} ref={ref} disabled>Start</button>
+            <div onClick={props.startGame}>
+                <button ref={ref} disabled>Start</button>
+            </div>
         </section>
     )
 })
