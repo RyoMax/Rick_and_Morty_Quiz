@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer } from "react";
-import Welcome from "./components/Welcome"
-import Header from "./components/Header.js"
-import Instance1 from "./components/Instance-1"
+import Welcome from "./views/Welcome"
+import Header from "./views/Header.js"
 import jsonDescr from "./assets/episode-descr.js"
 
 const initialState = {
@@ -10,10 +9,11 @@ const initialState = {
     statInitializer: true,
     firstInstanceQuestions: [],
     secondInstanceQuestions: [],
-    thirdInstanceQuestions: []
+    thirdInstanceQuestions: [],
+    pageReady: false
 };
 
-const display = React.createRef()
+const startButton = React.createRef()
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -29,6 +29,8 @@ const reducer = (state, action) => {
             return { ...state, secondInstanceQuestions: action.value }
         case "setThirdInstanceQuestions":
             return { ...state, thirdInstanceQuestions: action.value }
+        case "setPageReady":
+            return { ...state, pageReady: true }
         default:
             break;
     }
@@ -55,7 +57,7 @@ const App = () => {
         }
         let idsToFetch = []
         while (idsToFetch.length !== amount) {
-            let newId = Math.floor(Math.random() * (max - 0 + 1) + 0)
+            let newId = Math.floor(Math.random() * (max - 1 + 1) + 1)
             if (newId !== theCorrect && !(idsToFetch.includes(newId))) {
                 idsToFetch.push(newId)
             }
@@ -68,9 +70,6 @@ const App = () => {
 
     //? pattern for the character question: [{correct: [correctObj], options: [[optionObj], [optionObj], [optionObj], [correctObj]]}, [...] ]
     const fetchCharacterQuestions = (questionCount, optionCount) => {
-        //characters per page: 20; pages: 34
-        //formula to get page: Math.floor(optId/19)
-        //formula to get the id: optID % 20
         let allOptions = []
         let correctIds = []
         while (allOptions.length < questionCount) {
@@ -82,8 +81,6 @@ const App = () => {
                 optionsId.push(correctId)
                 optionsId = randomizeOptions(optionsId)
                 optionsId.forEach(opt => {
-                    // let page = Math.floor(opt/19)
-                    // let id = opt % 20
                     let id = opt + 1
                     fetch(`${characterApi}/${id}`)
                         .then(res => res.json())
@@ -102,41 +99,36 @@ const App = () => {
         return allOptions
     }
 
-    //? pattern for the episode question: [{dcorrect: [correctObj], options: [[optionObj], [optionObj], [optionObj], [correctObj]]}, [...] ]
+    //? pattern for the episode question: [{episode: [episodeObj], options: [[optionObj], [optionObj], [optionObj], [correctObj]]}, [...] ]
     const fetchEpisodeQuestions = (questionCount, optionCount) => {
-        //characters per page: 20; pages: 34
-        //formula to get page: Math.floor(optId/19)
-        //formula to get the id: optID % 20
         let allOptions = []
         let correctIds = []
         while (allOptions.length < questionCount) {
             let correctId = generateIdsToFetch(state.episodeIds + 1, 1)[0]
             if (!(correctIds[correctIds.length - 1]) || !(correctIds.includes(correctId))) {
+                correctIds.push(correctId)
                 let questionObj = { options: [] }
-                //optionsId.push(correctId)
-                //optionsId = randomizeOptions(optionsId)
                 fetch(`${episodeApi}/${correctId}`)
                     .then(res => res.json())
                     .then(data => {
                         questionObj.episode = data
+                        questionObj.episode.descr = episodeDescr[correctId - 1]
+                        //console.log("this is the last Episode", data)
+                        //console.log("fetched with the correctId", correctId)
                         let allCharacter = data.characters
                         let allCharacterIds = allCharacter.map(char => {
                             let splitedChar = char.split("/")
                             let id = splitedChar[splitedChar.length - 1]
-                            //console.log(splitedChar)
                             return parseFloat(id)
                         })
                         let allCharacterIdsSliced = randomizeOptions(allCharacterIds).slice(- optionCount + 1)
-                        console.log("options so far: ", allCharacterIds)
                         while (allCharacterIdsSliced.length < optionCount) {
                             let wrongChar = generateIdsToFetch(state.episodeIds + 1, 1)[0]
                             if (!(allCharacterIds.includes(wrongChar))) {
                                 allCharacterIdsSliced.push(wrongChar)
-                                console.log("wrong Char", wrongChar)
                             }
                         }
                         allCharacterIdsSliced = randomizeOptions(allCharacterIdsSliced)
-                        console.log("all Options:", allCharacterIdsSliced)
 
                         allCharacterIdsSliced.forEach(charId => {
                             fetch(`${characterApi}/${charId}`)
@@ -148,21 +140,6 @@ const App = () => {
 
                     })
                 allOptions.push(questionObj)
-                /* optionsId.forEach((opt, j) => {
-                    // let page = Math.floor(opt/19)
-                    // let id = opt % 20
-                    let id = opt + 1
-                    fetch(`${characterApi}/${id}`)
-                        .then(res => res.json())
-                        .then(data => {
-                            questionObj.options.push(data)
-                            if (data.id === (correctId + 1)) {
-                                console.log("MATCH!!!")
-                                questionObj.correct = data
-                            }
-                        })
-                }) */
-                //allOptions.push(allCharacterIds)
             }
         }
 
@@ -194,8 +171,16 @@ const App = () => {
             dispatch({ type: "setFirstInstanceQuestions", value: fetchCharacterQuestions(4, 4) })
             dispatch({ type: "setSecondInstanceQuestions", value: fetchCharacterQuestions(4, 6) })
             dispatch({ type: "setThirdInstanceQuestions", value: fetchEpisodeQuestions(4, 6) })
+            dispatch({ type: "setPageReady" })
         }
     }, [state.statInitializer])
+
+    useEffect(() => {
+        if (state.pageReady) {
+            startButton.current.disabled = false
+
+        }
+    }, [state.pageReady])
 
 
 
@@ -208,7 +193,7 @@ const App = () => {
             <main>
                 {/* Initial Component, rendered when starting the app */}
                 {/* after submitting, the next component with the first question takes the place of the Welcome component */}
-                <Welcome />
+                <Welcome ref={startButton} />
 
                 <Instance1 />
             </main>
