@@ -57,6 +57,12 @@ header .header-img{
     height: 50px;
     width: auto;
 }
+
+footer{
+    font-size: 1rem;
+    text-align: end;
+    padding-right: 2rem;
+}
 /* --------------------------------------------------------- */
 /* Welcome */
 

@@ -21,7 +21,7 @@ const GameFinished = (props) => {
     })
     return (
         <section className="game-finished">
-            <h2>Done!</h2>
+            <h2>THAT'S IT</h2>
             <p>Your Score : {lifeScore}</p>
         </section>
     )
