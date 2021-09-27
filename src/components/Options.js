@@ -12,7 +12,7 @@ const Options = (props) => {
                 hint = option.location.name
             }
             return (
-                <div className="option-field">
+                <div onClick={props.checkAnswer} id={`option-${option.id}`} className="option-field">
                     <h4>{option.name}</h4>
                     <p>{hint}</p>
                 </div>
@@ -20,8 +20,8 @@ const Options = (props) => {
         } else if (props.questionType === "second" || props.questionType === "third") {
             let currentImg = option.image
             return (
-                <div className="option-field">
-                    <img src={currentImg} />
+                <div onClick={props.checkAnswer} id={`option-${option.id}`} className="option-field">
+                    <img src={currentImg} alt="Now, this would be cheating, wouldn't it?" />
                 </div>
             )
         }

@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --blue: #00b0c8;
+    --light-green: #80fd64;
+    --medium: 768px;
+    --large: 1280px;
+}
+body{
+    
+    background-color: black;
+    color: white;
+}
+
+main{
+    height: calc(100vh - 120px);
+}
+/* ------------------------------------------------------ */
+/* Header */
+header{
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header a {
+    display: flex;
+    text-decoration: none; 
+    align-items: center;
+}
+header a h1 {
+    margin: 0;
+    font-family: "GetSchwifty";
+    color: var(--blue);
+    font-size: 2rem;
+    font-weight: 900;
+    text-shadow: var(--light-green) 2px 0 3px, var(--light-green) 0 2px 3px, var(--light-green) -2px 0 3px, var(--light-green) 0 -2px 3px;
+    text-align: center;
+}
+header a h1 span{
+    display: block;
+}
+header .the{
+    font-size: 1rem;
+}
+header .quiz{
+    font-size: 1.5rem;
+}
+header .header-img{
+    height: 50px;
+    width: auto;
+}
+/* --------------------------------------------------------- */
+/* Welcome */
+
+.welcome{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (min-width: 768px){
+    main{
+        height: calc(100vh - 270px);
+    }
+    /* ------------------------------------------------------ */
+    /* Header */
+    header{
+        height: 270px;
+    }
+    header a h1 {
+        font-size: 4.5rem;
+        text-shadow: var(--light-green) 3px 0 5px, var(--light-green) 0 3px 5px, var(--light-green) -3px 0 5px, var(--light-green) 0 -3px 5px;
+    }
+    header .the{
+        font-size: 2rem;
+    }
+    header .quiz{
+        font-size: 3rem;
+    }
+    header .header-img{
+        height: 150px;
+        width: auto;
+    }
+    /* --------------------------------------------------------- */
+    /* Welcome */
+}
+@media (min-width: 1280px){
+    /* ------------------------------------------------------ */
+    /* Header */
+    
+    /* --------------------------------------------------------- */
+    /* Welcome */
+}

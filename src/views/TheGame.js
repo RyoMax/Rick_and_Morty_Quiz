@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Welcome from "./Welcome"
-import Instance1 from "./Instance-1"
+import Instances from "./Instances"
 
 const startButton = React.createRef()
 
@@ -12,7 +12,6 @@ const TheGame = props => {
 
     const startGame = () => {
         setGameStarted(true)
-        console.log("I was clickedy clicked!")
     }
 
     useEffect(() => {
@@ -25,7 +24,7 @@ const TheGame = props => {
     return (
         <>
             <Welcome started={gameStarted} startGame={startGame} ref={startButton} />
-            <Instance1 state={props.state} started={gameStarted} setStarted={setGameStarted} />
+            <Instances state={props.state} started={gameStarted} setStarted={setGameStarted} />
         </>
     )
 }

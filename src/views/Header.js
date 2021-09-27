@@ -1,14 +1,15 @@
 import React from "react"
-import headerImg from "../images/header.png"
+import headerImg from "../images/Pickle_rick.webp"
 
 const Header = () => {
     return (
         <a href="/">
             <h1>
-                Rick & Morty
-                <span>QUIZ</span>
+                <span className="the">The</span>
+                Rick and Morty
+                <span className="quiz">QUIZ</span>
             </h1>
-            <img src={headerImg} />
+            <img className="header-img" src={headerImg} />
         </a>
     )
 }

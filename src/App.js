@@ -2,6 +2,7 @@ import React, { useEffect, useReducer } from "react";
 import Header from "./views/Header.js"
 import jsonDescr from "./assets/episode-descr.js"
 import TheGame from "./views/TheGame"
+import "./styles.css"
 
 const initialState = {
     characterIds: 0,
@@ -86,7 +87,6 @@ const App = () => {
                         .then(data => {
                             questionObj.options.push(data)
                             if (data.id === (correctId + 1)) {
-                                console.log("MATCH!!!")
                                 questionObj.correct = data
                             }
                         })
@@ -112,8 +112,6 @@ const App = () => {
                     .then(data => {
                         questionObj.episode = data
                         questionObj.episode.descr = episodeDescr[correctId - 1]
-                        //console.log("this is the last Episode", data)
-                        //console.log("fetched with the correctId", correctId)
                         let allCharacter = data.characters
                         let allCharacterIds = allCharacter.map(char => {
                             let splitedChar = char.split("/")
@@ -157,16 +155,13 @@ const App = () => {
                         .then(data => {
                             dispatch({ type: "setEpisodeIds", value: data.info.count - 1 })
                             dispatch({ type: "resetStatInitializer" })
-                            console.log("We fetched the newest Stats")
                         })
                 })
         }
     }, [])
 
     useEffect(() => {
-        console.log("attemp to use fetched stats:")
         if (!(state.statInitializer)) {
-            console.log(state.characterIds)
             dispatch({ type: "setFirstInstanceQuestions", value: fetchCharacterQuestions(4, 4) })
             dispatch({ type: "setSecondInstanceQuestions", value: fetchCharacterQuestions(4, 6) })
             dispatch({ type: "setThirdInstanceQuestions", value: fetchEpisodeQuestions(4, 6) })
