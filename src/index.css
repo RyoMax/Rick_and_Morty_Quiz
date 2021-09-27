@@ -3,4 +3,22 @@
     src: local("GetSchwifty"),
      url("./fonts/get_schwifty.ttf") format("truetype");
     font-weight: normal;
-    }
+}
+@font-face {
+    font-family: "GemunuLibre";
+    src: local("GemunuLibre"),
+     url("./fonts/Gemunu_Libre/static/GemunuLibre-Light.ttf") format("truetype");
+    font-weight: lighter;
+}
+@font-face {
+    font-family: "GemunuLibre";
+    src: local("GemunuLibre"),
+     url("./fonts/Gemunu_Libre/static/GemunuLibre-Medium.ttf") format("truetype");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "GemunuLibre";
+    src: local("GetSchwifty"),
+     url("./fonts/Gemunu_Libre//static/GemunuLibre-Bold.ttf") format("truetype");
+    font-weight: bold;
+}
