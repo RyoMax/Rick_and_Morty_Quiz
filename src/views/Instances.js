@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Motion, spring } from "react-motion"
 import Question from "../components/Question"
 import Options from "../components/Options"
 import GameFinished from "../components/GameFinished"
@@ -33,7 +34,8 @@ const Instances = (props) => {
     }
 
     const checkAnswer = (event) => {
-        let instance
+        if(!pause){
+            let instance
         let correctObj
         let pick = event.target.closest(".option").id.split("-")
         pick = parseFloat(pick[1])
@@ -84,6 +86,7 @@ const Instances = (props) => {
         }
         console.log(pause)
         setPause(true)
+        }
     }
 
     const setUpQuestions = (instance, questionType) => {
@@ -190,16 +193,32 @@ const Instances = (props) => {
         console.log(interruption)
     }, [pause]) */
 
-    if(pause){
+    /* if (pause) {
         options = <Interruption nextQuestion={nextQuestion} message={message} />
-    }
+    } */
 
     return (
         <>
-            {/* {interruption} */}
+            <Motion
+                defaultStyle={{ y: -500, opacity: 0 }}
+                style={{ y: spring(pause ? 0 : -500), opacity: spring(pause ? 1 : 0) }}
+            >
+                {(style) => (
+                    <>
+                        {/*                         <Interruption style={{ opacity: style.opacity }} nextQuestion={nextQuestion} message={message} />*/}
+                        <section style={{
+                            opacity: style.opacity,
+                            transform: `translateY(${style.y}px)`
+                        }}
+                            className="interruption">
+                            <h3>{message}</h3>
+                            <button onClick={nextQuestion}>Next Question</button>
+                        </section>
+                    </>
+                )}
+            </Motion>
             {question}
             {options}
-            {/* {content} */}
         </>
     )
 }
