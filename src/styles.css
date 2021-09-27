@@ -17,6 +17,7 @@ body{
 
 main{
     height: calc(100vh - 120px);
+    padding: 2rem;
 }
 /* ------------------------------------------------------ */
 /* Header */
@@ -25,6 +26,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 3px solid var(--light-green);
 }
 header a {
     display: flex;
@@ -59,10 +61,120 @@ header .header-img{
 .welcome{
     height: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.welcome h2{
+    margin-bottom: 2rem;
+}
+.welcome button{
+    padding: .5rem 1rem;
+    background-color: var(--blue);
+    color: black;
+    font-family: "GetSchwifty";
+    border: 2px solid var(--light-green);
+    transition: all 0.1s;
+}
+.welcome button:hover{
+    box-shadow:  var(--light-green) 2px 0 20px, var(--light-green) 0 2px 20px, var(--light-green) -2px 0 20px, var(--light-green) 0 -2px 20px;
 
+}
+.welcome button:disabled{
+    background-color: gray;
+}
+
+/* --------------------------------------------------------- */
+/* Questions */
+
+.questions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.questions h3{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.questions img{
+    width: 80%;
+    height: auto;
+}
+.questions h4{
+    margin: 2rem;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+.questions p{
+    font-weight: lighter;
+}
+
+/* --------------------------------------------------------- */
+/* Options */
+
+.options{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.options .option{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 45%;
+    min-height: 150px;
+    padding: .5rem;
+    margin-bottom: 2rem;
+    border: 2px solid white;
+    text-align: center;
+    transition: all 0.2s;
+}
+.options .option:hover{
+    background-color: white;
+    color: black;
+}
+.options .option h4{
+    font-size: .8rem;
+}
+.options .option p{
+    font-size: .7rem;
+}
+.options .option img{
+    width: 100%;
+    height: auto;
+    margin: 1rem;
+}
+
+/* --------------------------------------------------------- */
+/* Interruption */
+
+.interruption{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    height: 200px;
+}
+.interruption h3{
+    font-size: 1.2rem;
+}
+.interruption button{
+    margin-top: 2rem;
+    padding: .5rem 1rem;
+    background-color: white;
+    color: black;
+    border: 2px solid var(--light-green);
+    transition: all 0.1s;
+}
+.interruption button:hover, .interruption button:active{
+    background-color: black;
+    color: white;
+}
 
 @media (min-width: 768px){
     main{
@@ -88,7 +200,43 @@ header .header-img{
         width: auto;
     }
     /* --------------------------------------------------------- */
-    /* Welcome */
+    /* Questions */
+
+    .questions img{
+        width: 400px;
+        height: auto;
+    }
+    .questions h3{
+        font-size: 2rem;
+    }
+    .questions h4{
+        font-size: 1.5rem;
+        text-decoration: underline;
+    }
+    /* --------------------------------------------------------- */
+    /* Options */
+
+    .options .option{
+        width: 40%;
+        min-height: 150px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        border: 2px solid white;
+        text-align: center;
+        transition: all 0.2s;
+    }
+    .options .option h4{
+        font-size: 1.2rem;
+    }
+    .options .option p{
+        font-size: 1rem;
+    }
+    .options .option img{
+        width: 80%;
+        height: auto;
+    }
+    /* --------------------------------------------------------- */
+    /* Interruption */
 }
 @media (min-width: 1280px){
     /* ------------------------------------------------------ */

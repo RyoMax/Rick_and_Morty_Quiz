@@ -12,16 +12,24 @@ const Options = (props) => {
                 hint = option.location.name
             }
             return (
-                <div onClick={props.checkAnswer} id={`option-${option.id}`} className="option-field">
+                <div onClick={props.checkAnswer} id={`option-${option.id}`} className="option">
                     <h4>{option.name}</h4>
-                    <p>{hint}</p>
+                    <p>From: <br/> {hint}</p>
                 </div>
             )
-        } else if (props.questionType === "second" || props.questionType === "third") {
+        } else if (props.questionType === "second") {
             let currentImg = option.image
             return (
-                <div onClick={props.checkAnswer} id={`option-${option.id}`} className="option-field">
+                <div onClick={props.checkAnswer} id={`option-${option.id}`} className="option">
                     <img src={currentImg} alt="Now, this would be cheating, wouldn't it?" />
+                </div>
+            )
+        }else if (props.questionType === "third"){
+            let currentImg = option.image
+            return (
+                <div onClick={props.checkAnswer} id={`option-${option.id}`} className="option">
+                    <img src={currentImg} alt="Now, this would be cheating, wouldn't it?" />
+                    <h4>{option.name}</h4>
                 </div>
             )
         }

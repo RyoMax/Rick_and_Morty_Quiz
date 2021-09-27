@@ -35,7 +35,7 @@ const Instances = (props) => {
     const checkAnswer = (event) => {
         let instance
         let correctObj
-        let pick = event.target.closest(".option-field").id.split("-")
+        let pick = event.target.closest(".option").id.split("-")
         pick = parseFloat(pick[1])
         switch (true) {
             case firstInstance.state:
@@ -191,12 +191,12 @@ const Instances = (props) => {
     }, [pause]) */
 
     if(pause){
-        interruption = <Interruption nextQuestion={nextQuestion} message={message} />
+        options = <Interruption nextQuestion={nextQuestion} message={message} />
     }
 
     return (
         <>
-            {interruption}
+            {/* {interruption} */}
             {question}
             {options}
             {/* {content} */}

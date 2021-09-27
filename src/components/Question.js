@@ -25,7 +25,7 @@ const Question = (props) => {
             <>
                 <h3>Who is this?</h3>
                 <h4> {currentName} </h4>
-                <p> {hint} </p>
+                <p>From {hint} </p>
             </>
         )
     } else if (props.questionType === "third") {
@@ -35,7 +35,7 @@ const Question = (props) => {
             <>
                 <h3>Which Character does NOT appear in this episode?</h3>
                 <h4> {currentEpisode} </h4>
-                <p> {hint} </p>
+                <p>{hint} </p>
             </>
         )
     }
