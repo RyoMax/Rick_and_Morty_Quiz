@@ -181,7 +181,7 @@ const App = () => {
                 {/* after submitting, the next component with the first question takes the place of the Welcome component */}
                 <TheGame state={state} />
             </main>
-            <footer>powered by rickandmortyapi.com</footer>
+            <footer>powered by <a href="https://rickandmortyapi.com/">rickandmortyapi.com</a></footer>
         </>
     )
 }

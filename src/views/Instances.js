@@ -33,6 +33,15 @@ const Instances = (props) => {
         return result
     }
 
+    const scrollToTop = () =>{
+        window.scrollTo({
+          top: 0, 
+          behavior: 'smooth'
+          /* you can also use 'auto' behaviour
+             in place of 'smooth' */
+        });
+      };
+
     const checkAnswer = (event) => {
         if(!pause){
             let instance
@@ -85,6 +94,7 @@ const Instances = (props) => {
                 break;
         }
         console.log(pause)
+        scrollToTop()
         setPause(true)
         }
     }

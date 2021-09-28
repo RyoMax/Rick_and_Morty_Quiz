@@ -12,7 +12,7 @@ const Question = (props) => {
         question = (
             <>
                 <h3>Who is this?</h3>
-                <img src={currentImg} />
+                <img src={currentImg} width="400" height="400" />
             </>
         )
     } else if (props.questionType === "second") {

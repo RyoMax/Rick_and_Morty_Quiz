@@ -21,14 +21,14 @@ const Options = (props) => {
             let currentImg = option.image
             return (
                 <div onClick={props.checkAnswer} id={`option-${option.id}`} className="option img-option">
-                    <img src={currentImg} alt="Now, this would be cheating, wouldn't it?" />
+                    <img src={currentImg} width="400" height="400" alt="Now, this would be cheating, wouldn't it?" />
                 </div>
             )
         }else if (props.questionType === "third"){
             let currentImg = option.image
             return (
                 <div onClick={props.checkAnswer} id={`option-${option.id}`} className="option img-option">
-                    <img src={currentImg} alt="Now, this would be cheating, wouldn't it?" />
+                    <img src={currentImg} width="400" height="400" alt="Now, this would be cheating, wouldn't it?" />
                     <h4>{option.name}</h4>
                 </div>
             )
