@@ -77,7 +77,6 @@ const App = () => {
             if (!(correctIds[correctIds.length - 1]) || !(correctIds.includes(correctId))) {
                 correctIds.push(correctId)
                 let optionsId = generateIdsToFetch(state.characterIds + 1, optionCount - 1, correctId)
-                console.log("The OptionIDs we fetched:",optionsId)
                 let questionObj = { options: [] }
                 optionsId.push(correctId)
                 optionsId = randomizeOptions(optionsId)
@@ -95,7 +94,6 @@ const App = () => {
                 allOptions.push(questionObj)
             }
         }
-        //console.log("This run we have the following ID's:", correctIds)
 
         return allOptions
     }

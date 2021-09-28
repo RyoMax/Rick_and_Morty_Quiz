@@ -11,9 +11,9 @@ const Welcome = React.forwardRef((props, ref) => {
     }
     return (
         <section ref={welcome} className="welcome">
-            <h2>Test your Rick and Morty knowledge</h2>
+            <h2>TEST YOUR RICK AND MORTY KNOWLEDGE</h2>
             <div onClick={props.startGame}>
-                <button ref={ref} disabled>Get Schwifty</button>
+                <button ref={ref} disabled>GET SCHWIFTY</button>
             </div>
         </section>
     )

@@ -53,11 +53,9 @@ const Instances = (props) => {
                 instance = props.state.firstInstanceQuestions
                 correctObj = getCorrectObj(instance, "first")
                 if (correctObj.id === pick) {
-                    console.log("CORREECT!!")
                     setMessage("Correct!")
                     setScore(score + 1)
                 } else {
-                    console.log("LOOOOOSER!!!")
                     setMessage("Wrong!")
                 }
                 break;
@@ -65,11 +63,9 @@ const Instances = (props) => {
                 instance = props.state.secondInstanceQuestions
                 correctObj = getCorrectObj(instance, "second")
                 if (correctObj.id === pick) {
-                    console.log("CORREECT!!")
                     setMessage("Correct!")
                     setScore(score + 1)
                 } else {
-                    console.log("LOOOOOSER!!!")
                     setMessage("Wrong!")
                 }
                 break;
@@ -82,18 +78,15 @@ const Instances = (props) => {
                     return parseFloat(id)
                 })
                 if (!correctObj.includes(pick)) {
-                    console.log("CORREECT!!")
                     setMessage("Correct!")
                     setScore(score + 1)
                 } else {
-                    console.log("LOOOOOSER!!!")
                     setMessage("Wrong!")
                 }
                 break;
             default:
                 break;
         }
-        console.log(pause)
         scrollToTop()
         setPause(true)
         }
@@ -149,7 +142,6 @@ const Instances = (props) => {
     }
 
     const nextQuestion = () => {
-        console.log("we're in, lads!")
         switch (true) {
             case firstInstance.state:
                 if (firstInstance.length - 1 === round) {
@@ -194,18 +186,6 @@ const Instances = (props) => {
         }
     }, [props.started])
 
-    /* useEffect(() => {
-        if(pause){
-            interruption = <Interruption nextQuestion={nextQuestion} message={message} />
-        }else {
-            interruption = ""
-        }
-        console.log(interruption)
-    }, [pause]) */
-
-    /* if (pause) {
-        options = <Interruption nextQuestion={nextQuestion} message={message} />
-    } */
 
     return (
         <>
