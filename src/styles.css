@@ -17,6 +17,7 @@ body{
 
 main{
     position: relative;
+    min-height: calc(100vh - 140px);
     padding: 2rem;
 }
 /* ------------------------------------------------------ */
@@ -60,9 +61,13 @@ header .header-img{
 }
 
 footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
     font-size: 1rem;
     text-align: end;
     padding-right: 2rem;
+    background-color: black;
 }
 footer a{
     padding: .5rem 0;
@@ -78,7 +83,7 @@ footer a:hover{
 
 .welcome{
     position: relative;
-    height: 100%;
+    min-height: calc(100vh - 140px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -181,7 +186,8 @@ footer a:hover{
 .interruption{
     position: absolute;
     top: 0%;
-    width: calc(100% - 4rem);
+    left: 0%;
+    width: 100%;
     height: calc(50vh - 120px);
     display: flex;
     flex-direction: column;
@@ -189,7 +195,6 @@ footer a:hover{
     align-items: center;
     background-color: rgba(0, 0, 0, 0);
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7) 15%,rgba(0, 0, 0, 0.9) 35%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.9) 65%, rgba(0, 0, 0, 0.7) 85%, rgba(0, 0, 0, 0));
-    margin: 2rem;
     padding: 10rem;
     z-index: 20;
 }
@@ -241,7 +246,7 @@ footer a:hover{
 
 @media (min-width: 768px){
     main{
-        height: calc(100vh - 270px);
+        min-height: calc(100vh - 270px);
     }
     /* ------------------------------------------------------ */
     /* Header */
@@ -263,6 +268,9 @@ footer a:hover{
         width: auto;
     }
 
+    .welcome{
+        min-height: calc(100vh - 600px);
+    }
     .welcome h2{
         font-size: 2.5rem;
     }
