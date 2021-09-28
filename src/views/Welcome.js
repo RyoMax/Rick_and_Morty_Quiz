@@ -7,6 +7,7 @@ const Welcome = React.forwardRef((props, ref) => {
     
     if(props.started){
         welcome.current.style.display = "none"
+        console.log(welcome.current)
     }
     return (
         <section ref={welcome} className="welcome">

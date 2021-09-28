@@ -229,7 +229,11 @@ footer a:hover{
 .game-finished p{
     font-size: 4.5rem;
 }
-.game-finished span{
+.game-finished p .score{
+    transition: all 0.3s;
+}
+
+.game-finished .verdict{
     font-size: 1.3rem;
     margin-top: 2rem;
 }

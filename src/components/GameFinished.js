@@ -54,6 +54,15 @@ const GameFinished = (props) => {
         if (lifeScore === props.score) {
             display.current.style.textDecoration = "underline";
         } else {
+            if (lifeScore < 4) {
+                display.current.children[0].style.color = "red";
+            } else if (lifeScore < 7) {
+                display.current.children[0].style.color = "yellow";
+            }else if(lifeScore < 12){
+                display.current.children[0].style.color = "#80fd64";
+            }else{
+                display.current.children[0].style.color = "#00b0c8";
+            }
             setTimeout(() => {
                 setLifeScore(lifeScore + 1)
             }, 200);
@@ -74,8 +83,8 @@ const GameFinished = (props) => {
     return (
         <section className="game-finished">
             <h2>THAT'S IT</h2>
-            <p ref={display} >Your Score : {lifeScore}</p>
-            <span>{verdict}</span>
+            <p ref={display} >Your Score : <span className="score">{lifeScore}</span></p>
+            <span className="verdict">{verdict}</span>
         </section>
     )
 }
