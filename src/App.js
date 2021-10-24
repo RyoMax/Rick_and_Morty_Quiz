@@ -76,8 +76,9 @@ const App = () => {
             let correctId = generateIdsToFetch(state.characterIds, 1)[0]
             if (!(correctIds[correctIds.length - 1]) || !(correctIds.includes(correctId))) {
                 correctIds.push(correctId)
-                let optionsId = generateIdsToFetch(state.characterIds + 1, optionCount - 1, correctId)
+                let optionsId = generateIdsToFetch(state.characterIds, optionCount - 1, correctId)
                 let questionObj = { options: [] }
+                console.log(optionsId, "these are the generated id's")
                 optionsId.push(correctId)
                 optionsId = randomizeOptions(optionsId)
                 optionsId.forEach(opt => {
@@ -164,7 +165,7 @@ const App = () => {
         if (!(state.statInitializer)) {
             dispatch({ type: "setFirstInstanceQuestions", value: fetchCharacterQuestions(4, 4) })
             dispatch({ type: "setSecondInstanceQuestions", value: fetchCharacterQuestions(4, 6) })
-            dispatch({ type: "setThirdInstanceQuestions", value: fetchEpisodeQuestions(4, 6) })
+            dispatch({ type: "setThirdInstanceQuestions", value: fetchEpisodeQuestions(41, 6) })
             dispatch({ type: "setPageReady" })
         }
     }, [state.statInitializer])

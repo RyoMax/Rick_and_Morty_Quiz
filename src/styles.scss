@@ -1,0 +1,363 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --blue: #00b0c8;
+    --light-green: #80fd64;
+    --medium: 768px;
+    --large: 1280px;
+}
+body{
+    background-color: black;
+    color: hotpink;
+    font-family: "GemunuLibre";
+}
+
+main{
+    position: relative;
+    min-height: calc(100vh - 140px);
+    padding: 2rem;
+}
+/* ------------------------------------------------------ */
+/* Header */
+header{
+    position: relative;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-bottom: 3px solid var(--light-green);
+    z-index: 40;
+}
+header a {
+    display: flex;
+    text-decoration: none; 
+    align-items: center;
+}
+header a h1 {
+    margin: 0;
+    font-family: "GetSchwifty";
+    color: var(--blue);
+    font-size: 2rem;
+    font-weight: 900;
+    text-shadow: var(--light-green) 2px 0 3px, var(--light-green) 0 2px 3px, var(--light-green) -2px 0 3px, var(--light-green) 0 -2px 3px;
+    text-align: center;
+}
+header a h1 span{
+    display: block;
+}
+header .the{
+    font-size: 1rem;
+}
+header .quiz{
+    font-size: 1.5rem;
+}
+header .header-img{
+    height: 50px;
+    width: auto;
+}
+
+footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-size: 1rem;
+    text-align: end;
+    padding-right: 2rem;
+    background-color: black;
+}
+footer a{
+    padding: .5rem 0;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+footer a:hover{
+    color: #AAA;
+}
+/* --------------------------------------------------------- */
+/* Welcome */
+
+.welcome{
+    position: relative;
+    min-height: calc(100vh - 140px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 22;
+}
+.welcome h2{
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+}
+.welcome button{
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: var(--blue);
+    font-family: "GemunuLibre";
+    color: black;
+    border: 2px solid var(--light-green);
+    border-radius: 60px;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+.welcome button:hover, .welcome button:active{
+    box-shadow:  var(--light-green) 2px 0 20px, var(--light-green) 0 2px 20px, var(--light-green) -2px 0 20px, var(--light-green) 0 -2px 20px;
+
+}
+.welcome button:disabled{
+    background-color: gray;
+}
+
+/* --------------------------------------------------------- */
+/* Questions */
+
+.questions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.questions h3{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.questions img{
+    width: 80%;
+    height: auto;
+}
+.questions h4{
+    margin: 2rem;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+.questions p{
+    font-weight: lighter;
+}
+
+/* --------------------------------------------------------- */
+/* Options */
+
+.options{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.options .option{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 45%;
+    min-height: 150px;
+    padding: .5rem;
+    margin-bottom: 2rem;
+    border: 2px solid white;
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.options .option:hover{
+    background-color: white;
+    color: black;
+}
+.options .option h4{
+    font-size: .8rem;
+}
+.options .option p{
+    font-size: .7rem;
+}
+.options .option img{
+    width: 100%;
+    height: auto;
+    margin: 1rem;
+}
+
+/* --------------------------------------------------------- */
+/* Interruption */
+
+.interruption{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: calc(50vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7) 15%,rgba(0, 0, 0, 0.9) 35%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.9) 65%, rgba(0, 0, 0, 0.7) 85%, rgba(0, 0, 0, 0));
+    padding: 10rem;
+    z-index: 20;
+}
+.interruption h3{
+    font-size: 1.5rem;
+}
+.interruption button{
+    margin-top: 2rem;
+    padding: .6rem 1.2rem;
+    background-color: white;
+    color: black;
+    font-size: 1.2rem;
+    border: 2px solid var(--light-green);
+    border-radius: 10px;
+    transition: all 0.1s;
+    font-family: "GemunuLibre";
+    cursor: pointer;
+}
+.interruption button:hover, .interruption button:active{
+    background-color: black;
+    color: white;
+}
+/* --------------------------------------------------------- */
+/* game finished */
+
+.game-finished{
+    width: 100%;
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+.game-finished h2{
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+.game-finished p{
+    font-size: 4.5rem;
+}
+.game-finished p .score{
+    transition: all 0.3s;
+}
+
+.game-finished .verdict{
+    font-size: 1.3rem;
+    margin-top: 2rem;
+}
+
+
+@media (min-width: 768px){
+    main{
+        min-height: calc(100vh - 270px);
+    }
+    /* ------------------------------------------------------ */
+    /* Header */
+    header{
+        height: 270px;
+    }
+    header a h1 {
+        font-size: 4.5rem;
+        text-shadow: var(--light-green) 3px 0 5px, var(--light-green) 0 3px 5px, var(--light-green) -3px 0 5px, var(--light-green) 0 -3px 5px;
+    }
+    header .the{
+        font-size: 2rem;
+    }
+    header .quiz{
+        font-size: 3rem;
+    }
+    header .header-img{
+        height: 150px;
+        width: auto;
+    }
+
+    .welcome{
+        min-height: calc(100vh - 600px);
+    }
+    .welcome h2{
+        width: 70%;
+        font-size: 6rem;
+        margin-bottom: 6rem;
+    }
+    .welcome button{
+        font-size: 2.5rem;
+    }
+    /* --------------------------------------------------------- */
+    /* Questions */
+
+    .questions img{
+        width: 400px;
+        height: auto;
+    }
+    .questions h3{
+        font-size: 3rem;
+    }
+    .questions h4{
+        font-size: 2rem;
+        text-decoration: underline;
+    }
+    /* --------------------------------------------------------- */
+    /* Options */
+    .options{
+        justify-content: space-evenly;
+    }
+    .options .option{
+        width: 40%;
+        min-height: 150px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        border: 2px solid white;
+        border-radius: 30px;
+        text-align: center;
+        transition: all 0.2s;
+    }
+    .options .img-option{
+        width: 30%
+    }
+    .options .option h4{
+        font-size: 2rem;
+    }
+    .options .option p{
+        font-size: 1.8rem;
+    }
+    .options .option img{
+        width: 80%;
+        height: auto;
+    }
+    /* --------------------------------------------------------- */
+    /* Interruption */
+
+    .interruption{
+        height: calc(50vh - 270px);
+    }
+    .interruption h3{
+        font-size: 3rem;
+    }
+    .interruption button{
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        border-radius: 25px;
+    }
+    /* --------------------------------------------------------- */
+    /* game finished */
+
+    .game-finished{
+        height: 100%;
+    }
+    .game-finished h2{
+        font-size: 5rem;
+        margin-bottom: 3rem;
+    }
+    .game-finished p{
+        font-size: 8rem;
+    }
+}
+@media (min-width: 1280px){
+    /* ------------------------------------------------------ */
+    /* Header */
+    
+    /* --------------------------------------------------------- */
+    /* Welcome */
+}

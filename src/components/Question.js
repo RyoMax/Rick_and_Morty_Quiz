@@ -9,6 +9,7 @@ const Question = (props) => {
     let questionObj = props.currentCorrect
     if (props.questionType === "first") {
         let currentImg = questionObj.image
+        console.log(questionObj)
         question = (
             <>
                 <h3>Who is this?</h3>

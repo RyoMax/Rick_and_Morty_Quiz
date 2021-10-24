@@ -5,9 +5,11 @@ import React from "react"
 
 const Options = (props) => {
     //const currentImg = props.currentQuestion.correct.image
+    console.log(props.currentOptions)
     let options = props.currentOptions.map(option => {
         if (props.questionType === "first") {
             let hint = option.origin.name
+            console.log(option)
             if (hint === "unknown") {
                 hint = option.location.name
             }
